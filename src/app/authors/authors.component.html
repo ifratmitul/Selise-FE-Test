@@ -1,0 +1,19 @@
+
+
+<section class="player-container row">
+
+
+    
+    <span *ngFor="let item of authors" class="col-1-of-2">
+        <app-list-item [player] = "item" ></app-list-item>
+
+    </span>
+    
+    <!-- <ul><li *ngFor="let item of playerList">{{item.name}}</li></ul> -->
+</section>
+<div class="pagination">
+    <a href="#">&laquo;</a>
+    <a href="#">1</a>
+
+    <a href="#">&raquo;</a>
+  </div>
