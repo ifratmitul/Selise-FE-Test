@@ -1,13 +1,18 @@
 
 
 <!-- <app-author></app-author> -->
+<div class="container" >
+    <div class="row">
 
-<div class="row">
-
-    <section class="col-1-of-3">
-        <app-favoriteauthor></app-favoriteauthor>
-    </section>
-    <section class="col-2-of-3">
-        <app-authors></app-authors>
-    </section>
+        <section class="col-1-of-3">
+            <app-favoriteauthor></app-favoriteauthor>
+        </section>
+        <section class="col-2-of-3">
+            <router-outlet></router-outlet>
+            
+            <!-- <app-authors></app-authors> -->
+        </section>
+    </div>
 </div>
+
+

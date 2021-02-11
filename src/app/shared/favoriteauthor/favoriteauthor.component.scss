@@ -1,0 +1,14 @@
+.fav-container {
+  border-right: 1px dotted gray;
+  .header-box {
+    display: block;
+    //text-align: center;
+    margin: 0 auto;
+    padding: 2px;
+    h1 {
+      text-align: center;
+      font-size: 2.7rem;
+      font-weight: 700;
+    }
+  }
+}

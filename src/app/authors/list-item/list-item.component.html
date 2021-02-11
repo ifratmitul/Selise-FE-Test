@@ -1,8 +1,10 @@
-<a class="card4">
+<a class="card4"  >
 
     <h3>{{player.name}}</h3>
-    <h4>{{player.link}}</h4>
-    <!-- <button>{{}}</button> -->
+    <p>{{player.link}}</p>
+    <a (click) = "player.isFav ? removeFromFav(player.id) :  addToFav(player.id)" type="button">{{player.isFav ? 'Remove Fav' : 'Add Fav'}}</a>
+   <a routerLink="/author/{{player.id}}"> Details</a>
+
     <!-- <h4>Status: {player.active ? 'Action' : 'meh'}</h4> -->
     <div class="dimmer"></div>
     <div class="go-corner" href="#">

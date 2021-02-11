@@ -1,19 +1,29 @@
 
-
-<section class="player-container row">
+<div class="container">
+    <section class="player-container row">
 
 
     
-    <span *ngFor="let item of authors" class="col-1-of-2">
-        <app-list-item [player] = "item" ></app-list-item>
-
-    </span>
+        <span *ngFor="let item of authors" class="col-1-of-2">
+            <app-list-item [player] = "item" ></app-list-item>
     
-    <!-- <ul><li *ngFor="let item of playerList">{{item.name}}</li></ul> -->
-</section>
-<div class="pagination">
-    <a href="#">&laquo;</a>
-    <a href="#">1</a>
-
-    <a href="#">&raquo;</a>
-  </div>
+        </span>
+        
+        <!-- <ul><li *ngFor="let item of playerList">{{item.name}}</li></ul> -->
+    </section>
+    
+    <div class="d-flex justify-content-center">
+       
+        
+    <div class="pagination">
+        <a (click)= "OnPrevious()" type="button">&laquo;</a>
+        <a>{{pageNumber}}</a>
+        <a (click)= "onPageChange()" type="button">&raquo;</a>
+    </div>
+    
+    </div>
+    
+    
+    
+    
+</div>
