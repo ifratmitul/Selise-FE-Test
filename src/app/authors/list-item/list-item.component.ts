@@ -1,5 +1,4 @@
-import { NoopAnimationPlayer } from '@angular/animations';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 import { IAuthor } from 'src/app/shared/Model/AuthorDetails';
 
@@ -10,28 +9,35 @@ import { IAuthor } from 'src/app/shared/Model/AuthorDetails';
 })
 export class ListItemComponent implements OnInit {
   @Input() player :any
-
-@Output() authorId = new EventEmitter<string>();
+  @Output() FavChange = new EventEmitter<void>();
+  
   checkFav = false;
   favorites: IAuthor[] = [];
-  test = [1,2,3,4,5,5,6,7]
+
   
   constructor() { }
 
   ngOnInit(): void {
-   // console.log(this.player)
-    this.checkFav = this.player.isFav;
-    //console.log(this.favorites);
-    //console.log(this.favorites);
-    //console.log(this.checkFav);
-    
+    this.isFavCheck()
+  }
+
+  isFavCheck(){
+
+    if(localStorage.hasOwnProperty('fav')){
+      let localData = localStorage.getItem('fav');
+      let data = JSON.parse(localData);
+      console.log(data.id);
+      if(this.player.id === data.id) this.checkFav = true;
+     }
+
   }
 
   addToFav(id:string){
-    console.log('Adding');
-    this.checkFav = !this.player.isFav;
-    this.player.isFav = !this.player.isFav
-    let data =   { name: this.player.name, 
+    console.log('Adding: ' +id);
+    this.checkFav = !this.checkFav;
+
+    let data =   { 
+      name: this.player.name, 
       link: this.player.link, 
       bio: this.player.bio,
       quoteNo: this.player.quoteNo,
@@ -39,15 +45,13 @@ export class ListItemComponent implements OnInit {
       isFav: this.checkFav
     }
     
-      this.favorites.push(data);
-      //console.log(this.favorites);
-      let key = this.player.id
-      //this.authorId.emit(key);
+
 
        localStorage.setItem( 'fav', JSON.stringify(data));
-      // console.log(localStorage.hasOwnProperty('testFav'));
+       this.FavChange.emit()
+       //this.ngOnInit()
 
-    console.log(id)
+
 
     
   }
@@ -55,9 +59,11 @@ export class ListItemComponent implements OnInit {
 
   removeFromFav(id:string){
     console.log('removing');
-    this.checkFav = !this.player.isFav;
+    this.checkFav = !this.checkFav;
     this.player.isFav = !this.player.isFav
-    
+    localStorage.removeItem('fav');
+   this.FavChange.emit()
+    //his.ngOnInit()
     console.log(id)
   }
 

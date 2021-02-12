@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IAuthor } from '../shared/Model/AuthorDetails';
 import { AuthorParams } from '../shared/Model/authorParams';
 import { AuthorsService } from './authors.service';
@@ -9,7 +9,7 @@ import { AuthorsService } from './authors.service';
   styleUrls: ['./authors.component.scss']
 })
 export class AuthorsComponent implements OnInit {
-
+  @Output() Test = new EventEmitter<void>();
   authors : IAuthor[];
 
   authorParam = new AuthorParams();
@@ -50,6 +50,11 @@ export class AuthorsComponent implements OnInit {
 
     }
 
+  }
+
+  checkEmmit(){
+  this.ngOnInit()
+    
   }
 
 }

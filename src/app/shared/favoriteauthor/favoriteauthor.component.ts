@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-favoriteauthor',
@@ -8,9 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FavoriteauthorComponent implements OnInit {
 
   @Input() author :any
+
   favAuthor = [];
   constructor() { }
-test;
+
   ngOnInit(): void {
     this.getfavData();
 
@@ -18,12 +19,24 @@ test;
 
   getfavData(){
 
-   // if(localStorage.hasOwnProperty())
+   if(localStorage.hasOwnProperty('fav')){
     var localData = localStorage.getItem('fav');
     let data = JSON.parse(localData);
     this.favAuthor.push(data);
-    this.test = data;
+    
     console.log(this.favAuthor);
+   }
+
+
+
+
+  }
+
+  reload(){
+    console.log('checking emit');
+    
+    // this.getfavData();
+    this.ngOnInit();
 
   }
 

@@ -2,19 +2,22 @@
 <div class="fav-container">
     <div class="header-box">
         <h1>Favorite Author</h1>
+
     </div>
 
-    <section *ngIf ="favAuthor.length > 0" else message class="col-1-of-2 row">
+    <section *ngIf ="favAuthor.length > 0" class="col-1-of-2 row">
         <span *ngFor="let item of favAuthor">
-            <app-list-item [player] = "item"></app-list-item>
+            <app-list-item [player] = "item" (FavChange)="reload()"></app-list-item>
         </span>
 
 
     </section>
 
+    <p *ngIf="favAuthor.length < 1">No favorite author available. Add to by clicking on the Add Favorite button</p>
+
 
 </div>
 
-<ng-template #message>
+<!-- <ng-template #message>
     <p>No Favorite author available</p>
-</ng-template>
+</ng-template> -->

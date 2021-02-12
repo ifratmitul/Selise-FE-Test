@@ -6,7 +6,7 @@
 
     
         <span *ngFor="let item of authors" class="col-1-of-2">
-            <app-list-item [player] = "item" ></app-list-item>
+            <app-list-item [player] = "item" (FavChange)="checkEmmit()" ></app-list-item>
     
         </span>
         

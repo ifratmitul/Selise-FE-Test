@@ -5,9 +5,9 @@
     <p><strong>Link:</strong> {{player.link}}</p>
     <a 
     class="fav-btn"
-     (click) = "player.isFav ? removeFromFav(player.id) :  addToFav(player.id)"
+     (click) = "checkFav ? removeFromFav(player.id) :  addToFav(player.id)"
       type="button">
-      {{player.isFav ? 'Remove Fav' : 'Add Fav'}}
+      {{checkFav ? 'Remove Fav' : 'Add Fav'}}
     </a>
    <a routerLink="/author/{{player.id}}" class="details-btn"> Details</a>
 
