@@ -14,7 +14,7 @@ export class AuthorsComponent implements OnInit {
   authors : IAuthor[];
 
   authorParam = new AuthorParams();
- 
+  isLoading = false;
   pageNumber : number;
   constructor(private authorService: AuthorsService, private FavService : FavoriteAuthorService) { }
 
@@ -27,11 +27,16 @@ export class AuthorsComponent implements OnInit {
   }
 
   getData(){
-
+    this.isLoading = true;
     this.authorService.getAuthors(this.authorParam).subscribe(res => {
       this.authors = res;
+      this.isLoading = false;
        //console.log(this.authors)
 
+    },
+    err => {
+      console.log(err);
+      this.isLoading = false;
     })
 
   }

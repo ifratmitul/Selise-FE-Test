@@ -1,7 +1,9 @@
 
 <div class="container">
     <h2>Author List</h2>
-    <section class="row">
+    <div *ngIf="isLoading" class="loading"><p>Loading Data......</p> </div>
+
+    <section class="row" *ngIf = "!isLoading">
 
 
     

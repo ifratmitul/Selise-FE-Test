@@ -15,12 +15,17 @@
 
     .back-btn {
       border: none;
-      background-color: gainsboro;
+      background-color: rgb(218, 107, 107);
       font-size: 1rem;
+      padding: 1rem;
+      color: white;
+      font-size: 1.5rem;
 
       &:hover {
         background-color: gray;
+        font-weight: bolder;
         color: white;
+        border: 1px solid red;
       }
     }
     ul {

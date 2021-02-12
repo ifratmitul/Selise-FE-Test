@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 import { AuthorParams } from '../shared/Model/authorParams';
 
 @Injectable({
@@ -18,6 +18,7 @@ export class AuthorsService {
     if(authorParams.skip) params = params.append('skip', authorParams.skip.toString())
 
     return this.http.get(this.baseUrl+'/authors', {observe: 'response', params}).pipe(
+      //delay(2000),
       map( res => {
 
         // res.body;

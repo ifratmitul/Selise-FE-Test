@@ -10,6 +10,7 @@ import { AuthorsRoutingModule } from './authors-routing.module';
 
 
 
+
 @NgModule({
   declarations: [AuthorsComponent, ListItemComponent, AuthorDetailsComponent],
   imports: [

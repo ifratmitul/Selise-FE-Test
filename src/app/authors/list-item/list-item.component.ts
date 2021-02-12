@@ -27,15 +27,15 @@ export class ListItemComponent implements OnInit {
     if(localStorage.hasOwnProperty('fav')){
       let localData = localStorage.getItem('fav');
       let data = JSON.parse(localData);
-      //this.favorites.push(data);
-      //console.log(data.id);
+   
       if(this.player.id === data.id) this.checkFav = true;
      }
 
   }
 
   addToFav(id:string){
-    
+
+
     this.checkFav = !this.checkFav;
 
     let data =   { 
@@ -47,26 +47,16 @@ export class ListItemComponent implements OnInit {
       isFav: this.checkFav
     }
 
-    this.favorites.push(data);
-    console.log(this.favorites);
     localStorage.setItem( 'fav', JSON.stringify(data));
-      // this.FavChange.emit()
-
      this.FavService.test.next();
-       //this.ngOnInit()
-
-
-
     
   }
 
 
   removeFromFav(id:string){
-    //console.log('removing');
+
     this.checkFav = !this.checkFav;
-    this.player.isFav = !this.player.isFav
     localStorage.removeItem('fav');
-   //this.FavChange.emit()
     this.FavService.test.next();
   
   }
