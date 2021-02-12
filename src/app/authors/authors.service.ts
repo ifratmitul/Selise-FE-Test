@@ -8,7 +8,7 @@ import { AuthorParams } from '../shared/Model/authorParams';
 })
 export class AuthorsService {
 
-  private baseUrl = 'http://api.quotable.io';
+  private baseUrl = 'https://api.quotable.io';
 
   constructor(private http:HttpClient) { }
 
