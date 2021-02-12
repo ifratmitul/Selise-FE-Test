@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FavoriteAuthorService } from './favorite-author.service';
 
 @Component({
   selector: 'app-favoriteauthor',
@@ -10,34 +11,45 @@ export class FavoriteauthorComponent implements OnInit {
   @Input() author :any
 
   favAuthor = [];
-  constructor() { }
+  constructor(private FavService: FavoriteAuthorService) { }
 
   ngOnInit(): void {
-    this.getfavData();
+    this.getFavData();
+
+    this.FavService.test.subscribe( res => {
+        this.getFavData()
+    })
 
   }
 
-  getfavData(){
+  getFavData(){
 
    if(localStorage.hasOwnProperty('fav')){
     var localData = localStorage.getItem('fav');
     let data = JSON.parse(localData);
+    console.log(data);
+
     this.favAuthor.push(data);
     
-    console.log(this.favAuthor);
-   }
-
-
-
-
-  }
-
-  reload(){
-    console.log('checking emit');
     
-    // this.getfavData();
-    this.ngOnInit();
+    // this.FavService.getStoredData();
+    // this.FavService.FavData.subscribe(res => {
+    //   console.log(res);
+      
+    //   this.favAuthor.push(res);
+    // })
+    
+
+   }
+   else this.favAuthor = [];
+
+
+
+
 
   }
-
 }
+
+
+
+

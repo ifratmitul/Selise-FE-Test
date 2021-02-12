@@ -7,13 +7,13 @@
 
     <section *ngIf ="favAuthor.length > 0" class="col-1-of-2 row">
         <span *ngFor="let item of favAuthor">
-            <app-list-item [player] = "item" (FavChange)="reload()"></app-list-item>
+            <app-list-item [player] = "item" ></app-list-item>
         </span>
 
 
     </section>
 
-    <p *ngIf="favAuthor.length < 1">No favorite author available. Add to by clicking on the Add Favorite button</p>
+    <p *ngIf="favAuthor.length < 1" class="container">No favorite author available. Add by clicking on the Add Favorite button</p>
 
 
 </div>

@@ -25,13 +25,13 @@ export class AuthorDetailsComponent implements OnInit {
 
     this.authorService.getAuthorDetails(this.activateRoute.snapshot.paramMap.get('id')).subscribe(res => {
       
-      console.log(res);
+      //console.log(res);
       this.name = res['name'];
       this.quoteNo = res['quoteCount'];
       for(var i = 0; i < res['quotes'].length; i+=1){
         this.quotes.push(res['quotes'][i]['content'])
       }
-      console.log(this.quotes);
+      //console.log(this.quotes);
       
 
 

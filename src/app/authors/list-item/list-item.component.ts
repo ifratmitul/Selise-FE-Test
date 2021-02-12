@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { FavoriteAuthorService } from 'src/app/shared/favoriteauthor/favorite-author.service';
 
 import { IAuthor } from 'src/app/shared/Model/AuthorDetails';
 
@@ -15,7 +16,7 @@ export class ListItemComponent implements OnInit {
   favorites: IAuthor[] = [];
 
   
-  constructor() { }
+  constructor(private FavService:FavoriteAuthorService) { }
 
   ngOnInit(): void {
     this.isFavCheck()
@@ -26,14 +27,15 @@ export class ListItemComponent implements OnInit {
     if(localStorage.hasOwnProperty('fav')){
       let localData = localStorage.getItem('fav');
       let data = JSON.parse(localData);
-      console.log(data.id);
+      //this.favorites.push(data);
+      //console.log(data.id);
       if(this.player.id === data.id) this.checkFav = true;
      }
 
   }
 
   addToFav(id:string){
-    console.log('Adding: ' +id);
+    
     this.checkFav = !this.checkFav;
 
     let data =   { 
@@ -44,11 +46,13 @@ export class ListItemComponent implements OnInit {
       id: this.player.id,
       isFav: this.checkFav
     }
-    
 
+    this.favorites.push(data);
+    console.log(this.favorites);
+    localStorage.setItem( 'fav', JSON.stringify(data));
+      // this.FavChange.emit()
 
-       localStorage.setItem( 'fav', JSON.stringify(data));
-       this.FavChange.emit()
+     this.FavService.test.next();
        //this.ngOnInit()
 
 
@@ -58,13 +62,13 @@ export class ListItemComponent implements OnInit {
 
 
   removeFromFav(id:string){
-    console.log('removing');
+    //console.log('removing');
     this.checkFav = !this.checkFav;
     this.player.isFav = !this.player.isFav
     localStorage.removeItem('fav');
-   this.FavChange.emit()
-    //his.ngOnInit()
-    console.log(id)
+   //this.FavChange.emit()
+    this.FavService.test.next();
+  
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FavoriteAuthorService } from '../shared/favoriteauthor/favorite-author.service';
 import { IAuthor } from '../shared/Model/AuthorDetails';
 import { AuthorParams } from '../shared/Model/authorParams';
 import { AuthorsService } from './authors.service';
@@ -15,9 +16,12 @@ export class AuthorsComponent implements OnInit {
   authorParam = new AuthorParams();
  
   pageNumber : number;
-  constructor(private authorService: AuthorsService) { }
+  constructor(private authorService: AuthorsService, private FavService : FavoriteAuthorService) { }
 
   ngOnInit(): void {
+    this.FavService.test.subscribe( res => {
+      this.getData();
+  })
     this.getData();
     this.pageNumber = 1
   }
@@ -26,7 +30,7 @@ export class AuthorsComponent implements OnInit {
 
     this.authorService.getAuthors(this.authorParam).subscribe(res => {
       this.authors = res;
-       console.log(this.authors)
+       //console.log(this.authors)
 
     })
 
@@ -52,9 +56,6 @@ export class AuthorsComponent implements OnInit {
 
   }
 
-  checkEmmit(){
-  this.ngOnInit()
-    
-  }
+
 
 }
