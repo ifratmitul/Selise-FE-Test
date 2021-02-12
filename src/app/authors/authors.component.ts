@@ -42,9 +42,13 @@ export class AuthorsComponent implements OnInit {
 
   OnPrevious(){
 
-    this.authorParam.skip -= 10;
-    this.pageNumber--;
-    this.getData();
+    if(this.pageNumber != 1){
+      this.authorParam.skip -= 10;
+      this.pageNumber--;
+      this.getData();
+  
+
+    }
 
   }
 

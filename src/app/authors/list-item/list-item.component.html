@@ -1,9 +1,15 @@
 <a class="card4"  >
 
     <h3>{{player.name}}</h3>
-    <p>{{player.link}}</p>
-    <a (click) = "player.isFav ? removeFromFav(player.id) :  addToFav(player.id)" type="button">{{player.isFav ? 'Remove Fav' : 'Add Fav'}}</a>
-   <a routerLink="/author/{{player.id}}"> Details</a>
+    <p><strong>BIO:</strong> {{player.bio}}</p>
+    <p><strong>Link:</strong> {{player.link}}</p>
+    <a 
+    class="fav-btn"
+     (click) = "player.isFav ? removeFromFav(player.id) :  addToFav(player.id)"
+      type="button">
+      {{player.isFav ? 'Remove Fav' : 'Add Fav'}}
+    </a>
+   <a routerLink="/author/{{player.id}}" class="details-btn"> Details</a>
 
     <!-- <h4>Status: {player.active ? 'Action' : 'meh'}</h4> -->
     <div class="dimmer"></div>

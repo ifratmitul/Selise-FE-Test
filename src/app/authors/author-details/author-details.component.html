@@ -1,1 +1,26 @@
-<div *ngIf="authorDetails"></div>
+
+<div *ngIf="name" class="container">
+
+<div class="card">
+
+    <button [routerLink]="['/']" class="back-btn">Go back to main</button>
+    <h1>{{name}}</h1>
+
+    <div class="container">
+    <h5><strong>Number of quotes: </strong> {{quoteNo}}</h5>
+
+    <h5><strong>Quotes:</strong></h5>
+    
+    <ul>
+        <li *ngFor="let item of quotes">
+            <p>{{item}}</p>
+        </li>
+    </ul>
+    </div>
+</div>
+
+
+</div>
+
+
+

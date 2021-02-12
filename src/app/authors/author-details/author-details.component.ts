@@ -10,7 +10,12 @@ import { AuthorsService } from '../authors.service';
 export class AuthorDetailsComponent implements OnInit {
 
   authorDetails; 
-  constructor(private authorSerice: AuthorsService, private activateRoute : ActivatedRoute) { }
+
+  name : string;
+  quoteNo : number
+  quotes = [];
+
+  constructor(private authorService: AuthorsService, private activateRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loadData()
@@ -18,10 +23,17 @@ export class AuthorDetailsComponent implements OnInit {
 
   loadData(){
 
-    this.authorSerice.getAuthorDetails(this.activateRoute.snapshot.paramMap.get('id')).subscribe(res => {
+    this.authorService.getAuthorDetails(this.activateRoute.snapshot.paramMap.get('id')).subscribe(res => {
       
-      this.authorDetails = res;
-      console.log(this.authorDetails);
+      console.log(res);
+      this.name = res['name'];
+      this.quoteNo = res['quoteCount'];
+      for(var i = 0; i < res['quotes'].length; i+=1){
+        this.quotes.push(res['quotes'][i]['content'])
+      }
+      console.log(this.quotes);
+      
+
 
     })
 

@@ -4,7 +4,6 @@ import { AuthorsComponent } from './authors.component';
 import { ListItemComponent } from './list-item/list-item.component';
 
 import { AuthorDetailsComponent } from './author-details/author-details.component';
-import { RouterModule } from '@angular/router';
 import { AuthorsRoutingModule } from './authors-routing.module';
 
 
@@ -18,6 +17,6 @@ import { AuthorsRoutingModule } from './authors-routing.module';
 AuthorsRoutingModule
 
   ],
-// exports:[AuthorsComponent]
+  exports:[ListItemComponent]
 })
 export class AuthorsModule { }

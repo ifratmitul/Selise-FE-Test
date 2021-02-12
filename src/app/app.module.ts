@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
-import { AuthorsModule } from './authors/authors.module';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

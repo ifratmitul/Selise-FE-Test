@@ -1,7 +1,20 @@
 
 <div class="fav-container">
     <div class="header-box">
-        <h1>Favorite Authors</h1>
+        <h1>Favorite Author</h1>
     </div>
+
+    <section *ngIf ="favAuthor.length > 0" else message class="col-1-of-2 row">
+        <span *ngFor="let item of favAuthor">
+            <app-list-item [player] = "item"></app-list-item>
+        </span>
+
+
+    </section>
+
+
 </div>
 
+<ng-template #message>
+    <p>No Favorite author available</p>
+</ng-template>
