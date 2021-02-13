@@ -42,7 +42,7 @@ export class AuthorsComponent implements OnInit {
   }
 
   onPageChange(){
-
+    //by default i put limit to 10, for each page tho show 10 data. 
     this.authorParam.skip += 10;
     this.pageNumber++;
     this.getData();

@@ -1,4 +1,4 @@
-import { Component,  Input, OnInit, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FavoriteAuthorService } from './favorite-author.service';
 
 @Component({
@@ -8,9 +8,9 @@ import { FavoriteAuthorService } from './favorite-author.service';
 })
 export class FavoriteauthorComponent implements OnInit {
 
-  @Input() author :any
 
   favAuthor = [];
+  //test = [];
   constructor(private FavService: FavoriteAuthorService) { }
 
   ngOnInit(): void {
@@ -23,14 +23,14 @@ export class FavoriteauthorComponent implements OnInit {
   }
 
   getFavData(){
+    this.favAuthor = [];
 
    if(localStorage.hasOwnProperty('fav')){
     var localData = localStorage.getItem('fav');
     let data = JSON.parse(localData);
-   // console.log(data);
 
     this.favAuthor.push(data);
-    
+
    }
    else this.favAuthor = [];
 

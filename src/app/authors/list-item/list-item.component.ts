@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { FavoriteAuthorService } from 'src/app/shared/favoriteauthor/favorite-author.service';
 
 import { IAuthor } from 'src/app/shared/Model/AuthorDetails';
-
+let arr = [];
 @Component({
   selector: 'app-list-item',
   templateUrl: './list-item.component.html',
@@ -10,7 +10,6 @@ import { IAuthor } from 'src/app/shared/Model/AuthorDetails';
 })
 export class ListItemComponent implements OnInit {
   @Input() player :any
-  @Output() FavChange = new EventEmitter<void>();
   
   checkFav = false;
   favorites: IAuthor[] = [];
@@ -29,7 +28,11 @@ export class ListItemComponent implements OnInit {
       let data = JSON.parse(localData);
    
       if(this.player.id === data.id) this.checkFav = true;
+
      }
+
+    
+
 
   }
 
@@ -48,6 +51,8 @@ export class ListItemComponent implements OnInit {
     }
 
     localStorage.setItem( 'fav', JSON.stringify(data));
+
+    
      this.FavService.test.next();
     
   }
@@ -58,7 +63,10 @@ export class ListItemComponent implements OnInit {
     this.checkFav = !this.checkFav;
     localStorage.removeItem('fav');
     this.FavService.test.next();
+
   
   }
 
 }
+
+
